@@ -357,3 +357,6 @@ p { margin: 0 0 1em; }
 }
 
 .about__img { height: auto; }
+
+[hidden] { display: none !important; }
+.empty { margin-top: 32px; }

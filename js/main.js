@@ -123,6 +123,14 @@
 
     results.innerHTML = list.map(card).join('');
     empty.hidden = list.length > 0;
+    // nessun immobile pubblicato: messaggio dedicato e niente contatore/ordinamento
+    const none = data.length === 0;
+    $('.results__bar').hidden = none;
+    $('.portals').hidden = none;
+    $('#emptyTitle').textContent = none ? 'Nuovi annunci in arrivo' : 'Nessun immobile corrisponde ai filtri';
+    $('#emptyText').innerHTML = none
+      ? 'Stiamo aggiornando gli immobili disponibili. Raccontaci cosa cerchi e ti contattiamo noi, oppure guarda i nostri annunci su <a href="https://www.immobiliare.it/" target="_blank" rel="noopener">Immobiliare.it</a> e <a href="https://www.casa.it/" target="_blank" rel="noopener">Casa.it</a>.'
+      : 'Raccontaci cosa cerchi: ti avviseremo appena arriva la casa giusta.';
     count.innerHTML = `<b>${list.length}</b> ${list.length === 1 ? 'immobile trovato' : 'immobili trovati'}`;
   };
 
