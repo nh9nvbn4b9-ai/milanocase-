@@ -189,11 +189,15 @@ p { margin: 0 0 1em; }
 .about__media { position: relative; padding: 0 0 60px 0; }
 .about__img { border-radius: 24px; object-fit: cover; }
 .about__img--main { width: 88%; aspect-ratio: 4 / 3.3; box-shadow: var(--shadow); }
+.about__img--small.reveal { transition-delay: .15s; }
 .about__img--small { position: absolute; right: 0; bottom: 0; width: 46%; aspect-ratio: 4 / 3; border: 8px solid var(--bg-soft); box-shadow: var(--shadow); }
 .about__badge { position: absolute; left: -14px; bottom: 24px; background: var(--blue); color: #fff; border-radius: 20px; padding: 18px 22px; display: flex; align-items: center; gap: 12px; box-shadow: 0 20px 40px -14px rgba(29,79,224,.8); }
 .about__badge strong { font-family: var(--head); font-size: 2.3rem; font-weight: 900; line-height: 1; font-variant-numeric: tabular-nums; }
 .brand-inline { font-weight: 900; }
-.about__badge span { font-size: .8rem; font-weight: 600; line-height: 1.25; text-transform: uppercase; letter-spacing: .08em; }
+.about__badge .count { display: inline-block; min-width: 2ch; text-align: right; }
+.about__badge.is-counting { animation: badgePop .5s var(--ease) both; }
+@keyframes badgePop { from { transform: scale(.85); opacity: .4; } }
+.about__badge > span { font-size: .8rem; font-weight: 600; line-height: 1.25; text-transform: uppercase; letter-spacing: .08em; }
 .about__text h2 { font-size: clamp(1.8rem, 3.4vw, 2.6rem); }
 .about__lead { font-size: 1.12rem; color: var(--ink); }
 .about__points { list-style: none; padding: 0; margin: 28px 0 34px; display: grid; gap: 14px; }

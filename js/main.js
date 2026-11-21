@@ -147,24 +147,29 @@
   openNow.classList.add(isOpen ? 'is-open' : 'is-closed');
   openNow.textContent = isOpen ? 'Siamo aperti adesso' : 'In questo momento siamo chiusi';
 
-  /* ---------- Contatore "20+ anni" ---------- */
+  /* ---------- Contatore "20+ anni": parte da 0 appena il riquadro è visibile ---------- */
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   $$('[data-count-to]').forEach(el => {
     const target = +el.dataset.countTo;
-    if (reduce) return;
+    const box = el.closest('.about__badge') || el;
+    if (reduce || !('IntersectionObserver' in window)) return;
     el.textContent = '0';
-    const co = new IntersectionObserver(([en]) => {
-      if (!en.isIntersecting) return;
+    const co = new IntersectionObserver((entries) => {
+      if (!entries.some(en => en.isIntersecting)) return;
       co.disconnect();
-      const dur = 1100, t0 = performance.now();
-      const tick = (t) => {
-        const k = Math.min(1, (t - t0) / dur);
-        el.textContent = Math.round(target * (1 - Math.pow(1 - k, 3)));
-        if (k < 1) requestAnimationFrame(tick);
-      };
-      requestAnimationFrame(tick);
-    }, { threshold: 0.6 });
-    co.observe(el);
+      box.classList.add('is-counting');
+      const dur = 1300;
+      setTimeout(() => {
+        const t0 = performance.now();
+        const tick = (t) => {
+          const k = Math.min(1, (t - t0) / dur);
+          el.textContent = Math.round(target * (1 - Math.pow(1 - k, 3)));
+          if (k < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      }, 150);
+    }, { threshold: 0.9 });
+    co.observe(box);
   });
 
   /* ---------- Varie ---------- */
