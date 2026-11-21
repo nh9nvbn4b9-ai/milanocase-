@@ -100,7 +100,7 @@ p { margin: 0 0 1em; }
 
 /* ---------- Hero ---------- */
 .hero { position: relative; min-height: 100svh; display: flex; align-items: flex-end; overflow: hidden; background: var(--navy); }
-.hero__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 40%; }
+.hero__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
 .hero__shade { position: absolute; inset: 0; background:
   radial-gradient(120% 80% at 0% 100%, rgba(6,9,35,.85) 0%, rgba(6,9,35,.35) 45%, transparent 70%),
   linear-gradient(180deg, rgba(10,14,50,.45) 0%, rgba(10,14,50,.05) 30%, rgba(10,14,50,.1) 60%, rgba(10,14,50,.55) 100%); }
@@ -192,7 +192,7 @@ p { margin: 0 0 1em; }
 .about__img--small.reveal { transition-delay: .15s; }
 .about__img--small { position: absolute; right: 0; bottom: 0; width: 46%; aspect-ratio: 4 / 3; border: 8px solid var(--bg-soft); box-shadow: var(--shadow); }
 .about__badge { position: absolute; left: -14px; bottom: 24px; background: var(--blue); color: #fff; border-radius: 20px; padding: 18px 22px; display: flex; align-items: center; gap: 12px; box-shadow: 0 20px 40px -14px rgba(29,79,224,.8); }
-.about__badge strong { font-family: var(--head); font-size: 2.3rem; font-weight: 900; line-height: 1; font-variant-numeric: tabular-nums; }
+.about__badge strong { font-family: var(--head); font-size: clamp(2.6rem, 4vw, 3.4rem); font-weight: 900; line-height: 1; font-variant-numeric: tabular-nums; }
 .brand-inline { font-weight: 900; }
 .about__badge .count { display: inline-block; min-width: 2ch; text-align: right; }
 .about__badge.is-counting { animation: badgePop .5s var(--ease) both; }
@@ -355,3 +355,5 @@ p { margin: 0 0 1em; }
   .hero__sub i { display: none; }
   .hero__sub span { display: block; color: rgba(255,255,255,.8); }
 }
+
+.about__img { height: auto; }
